@@ -7,6 +7,7 @@ plugins {
 android {
     namespace = "info.mschmitt.giraffetemplate.app"
     compileSdk = 33
+
     defaultConfig {
         applicationId = "info.mschmitt.giraffetemplate.app"
         minSdk = 26
@@ -15,6 +16,7 @@ android {
         versionName = "1.0.$versionCode"
         setProperty("archivesBaseName", "$applicationId-$versionName")
     }
+
     buildTypes {
         debug {
             versionNameSuffix = "-SNAPSHOT"
@@ -27,14 +29,17 @@ android {
             )
         }
     }
+
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     buildFeatures {
         viewBinding = true
     }
+
     lint {
         setOf(
             "UseSparseArrays",
@@ -50,7 +55,6 @@ android {
 
 dependencies {
     implementation(project(":lib"))
-    coreLibraryDesugaring(libs.android.desugarJdkLibs)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
@@ -63,4 +67,5 @@ dependencies {
             because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
         }
     }
+    coreLibraryDesugaring(libs.android.desugarJdkLibs)
 }
